@@ -1,0 +1,22 @@
+* {
+    margin: 0px;
+}
+
+body {
+    background-color: burlywood;
+}
+
+#navbar {
+    background-color: blanchedalmond;
+    display: flex;
+}
+
+.navitem {
+    background-color: brown;
+    display: block;
+    padding: 10px;
+}
+
+.navitem:hover { 
+    background-color: rgb(212, 103, 52);
+}
