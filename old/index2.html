@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        My Website!
+    </title>
+
+    <link rel="stylesheet" href="css/main2.css">
+</head>
+
+<body>
+    <div id="decklistdisplay">
+        <div id="maindeck">
+
+        </div>
+        <div id="sidedeck">
+
+        </div>
+    </div>
+
+    <form id="text-input-section">
+        <select name="Color Combination">
+            <option value="" disabled selected>Color Combination</option>
+            <option value="W">Mono White</option>
+            <option value="U">Mono Blue</option>
+            <option value="B">Mono Black</option>
+            <option value="R">Mono Red</option>
+            <option value="G">Mono Green</option>
+            <option value="WU">Azorius</option>
+            <option value="WB">Orzhov</option>
+            <option value="UB">Dimir</option>
+            <option value="UR">Izzet</option>
+            <option value="BR">Rakdos</option>
+            <option value="BG">Golgari</option>
+            <option value="RG">Gruul</option>
+            <option value="RW">Boros</option>
+            <option value="GW">Selesnya</option>
+            <option value="GU">Simic</option>
+            <option value=""></option>
+            <option value="4C">Four Color</option>
+            <option value="5C">Five Color</option>
+        </select>
+    </form>
+
+    <script src="js/data.js"></script>
+    <script src="js/decks.js"></script>
+    <script src="js/editdistance.js"></script>
+    <script>
+        function init() {
+            // Preprocess data by timestamp
+
+            // Find decks without an archetypal deck
+            let unlabeledDecks = []
+            let labeledDecks = {
+
+            }
+            Object.keys(archetypalDecks).forEach(archetype => {
+                labeledDecks[archetype] = [];
+            })
+            let allowedDistance = 30;
+            for (let deckIndex1 = 0; deckIndex1 < data[1].length; deckIndex1++) {
+                let flag = true;
+                for (let archetypeIndex = 0; archetypeIndex < Object.keys(archetypalDecks).length; archetypeIndex++) {
+                    let archetype = Object.keys(archetypalDecks)[archetypeIndex];
+                    let distance = bagOfWordsDistance(deckToUnicodeString(data[1][deckIndex1]), deckToUnicodeString(archetypalDecks[archetype]));
+                    if (distance > allowedDistance) {
+
+                    } else {
+                        flag = false;
+                        labeledDecks[archetype].push(deckIndex1);
+                    }
+                }
+                if (flag) {
+                    console.log(data[0][deckIndex1]);
+                    console.log(data[1][deckIndex1]);
+                    unlabeledDecks.push(deckIndex1);
+                }
+            }
+            console.log(labeledDecks);
+            console.log(unlabeledDecks.length);
+
+            displayDeck(unlabeledDecks[0]);
+            console.log(data[0][unlabeledDecks[0]])
+            console.log(data[1][unlabeledDecks[0]])
+        }
+        function displayDeck(deckIndex) {
+            let board = document.getElementById("maindeck");
+            board.innerHTML = "Main Deck";
+            for (let i = 0; i < data[1][deckIndex][0].length; i++) {
+                let newElement = document.createElement("div");
+                newElement.classList.add('deckcardelement');
+                let number = document.createElement("div");
+                number.innerHTML = data[1][deckIndex][0][i][0];
+                number.classList.add("decknumber");
+                newElement.appendChild(number);
+                let text = document.createElement("div");
+                text.innerHTML = data[1][deckIndex][0][i][1];
+                text.classList.add("decktext");
+                newElement.appendChild(text);
+                board.appendChild(newElement);
+            }
+
+
+            board = document.getElementById("sidedeck");
+            board.innerHTML = "Side Deck";
+
+            for (let i = 0; i < data[1][deckIndex][1].length; i++) {
+                let newElement = document.createElement("div");
+                newElement.classList.add('deckcardelement');
+                let number = document.createElement("div");
+                number.innerHTML = data[1][deckIndex][1][i][0];
+                number.classList.add("decknumber");
+                newElement.appendChild(number);
+                let text = document.createElement("div");
+                text.innerHTML = data[1][deckIndex][1][i][1];
+                text.classList.add("decktext");
+                newElement.appendChild(text);
+                board.appendChild(newElement);
+            }
+
+        }
+
+
+
+        init();
+    </script>
+</body>
+
+
+
+
+</html>

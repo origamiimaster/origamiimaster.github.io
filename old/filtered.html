@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        My Website!
+    </title>
+
+    <link rel="stylesheet" href="css/main2.css">
+</head>
+
+<body>
+
+    <div id="loading-bar-container">
+        <div id="loading-bar">
+            0.00%
+        </div>
+    </div>
+
+    <div id="decklistdisplay">
+        <div id="maindeck">
+
+        </div>
+        <div id="sidedeck">
+
+        </div>
+    </div>
+
+
+
+    <form id="text-input-section">
+        <select name="Color Combination">
+            <option value="" disabled selected>Color Combination</option>
+            <option value="W">Mono White</option>
+            <option value="U">Mono Blue</option>
+            <option value="B">Mono Black</option>
+            <option value="R">Mono Red</option>
+            <option value="G">Mono Green</option>
+            <option value="WU">Azorius</option>
+            <option value="WB">Orzhov</option>
+            <option value="UB">Dimir</option>
+            <option value="UR">Izzet</option>
+            <option value="BR">Rakdos</option>
+            <option value="BG">Golgari</option>
+            <option value="RG">Gruul</option>
+            <option value="RW">Boros</option>
+            <option value="GW">Selesnya</option>
+            <option value="GU">Simic</option>
+            <option value=""></option>
+            <option value="4C">Four Color</option>
+            <option value="5C">Five Color</option>
+        </select>
+    </form>
+
+    <script src="js/data.js"></script>
+    <script src="js/decks.js"></script>
+    <script src="js/editdistance.js"></script>
+    <script src="js/filter.js"></script>
+    <script>var exports = {};</script>
+    <script src="js/hclust.min.js"></script>
+    <script>
+        let { clusters, distances, order, clustersGivenK } = clusterData({
+            data: data[1], //.slice(0, 100),
+            distance: (arrayA, arrayB) => { return bagOfWordsDistance(deckToUnicodeString(arrayA), deckToUnicodeString(arrayB)) },
+            // onProgress: (percent) => {
+            //     console.log(`${(percent * 100).toFixed(2)}%`)
+            //     document.getElementById("loading-bar").innerHTML = `${(percent * 100).toFixed(2)}%`
+            //     document.getElementById("loading-bar").style.width = `${(percent * 100).toFixed(0)}px`
+            // }
+        })
+    </script>
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,52 @@
+* {
+    margin: 0px;
+}
+
+body {
+    background-color: burlywood;
+}
+
+#navbar {
+    background-color: blanchedalmond;
+    display: flex;
+}
+
+.navitem {
+    background-color: brown;
+    display: block;
+    padding: 10px;
+}
+
+.navitem:hover {
+    background-color: rgb(212, 103, 52);
+}
+
+.deckcardelement {
+    margin: 1px;
+    display: flex;
+}
+
+.decknumber {
+    margin-right: 5px;
+}
+
+.decktext {}
+
+#maindeck {}
+
+#sidedeck {}
+
+#decklistdisplay {
+    display: flex;
+}
+
+#loading-bar-container {
+    background-color: lightgrey;
+    width: 100px;
+    height: 20px;
+}
+
+#loading-bar {
+    background-color: greenyellow;
+    width: 0px;
+}

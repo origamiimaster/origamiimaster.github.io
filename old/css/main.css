@@ -1,0 +1,127 @@
+* {
+    margin: 0px;
+    font-family: 'Cera Round Pro', sans-serif;
+}
+
+html {
+    height: 100%;
+    --timeline-position: 0px;
+}
+
+body {
+    background-color: lightblue;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#nav {
+    background-color: #333;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 20px;
+    flex-grow: 0;
+    /* padding: 4px; */
+}
+
+.nav-item {}
+
+.nav-item a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    /* background-color: lightgray;
+    cursor: pointer; */
+    background-color: #111;
+}
+
+#timeline-holder {
+    background-color: #EEE;
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+}
+
+#timeline-axis {
+    background-color: #777;
+    width: 100%;
+    flex-grow: 0;
+    flex-basis: 40px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#timeline-axis-line {
+    height: 50%;
+    border-bottom: 2px solid black;
+}
+
+.tickmark {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 20px;
+    width: 20px;
+    border-left: 2px solid black;
+}
+
+.circle {
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 50%;
+    white-space: nowrap;
+    font-display: none;
+    overflow: hidden;
+    cursor: default;
+}
+
+.circle:hover {
+    overflow: visible;
+}
+
+.timeline-element {
+    transform: translate(var(--timeline-position));
+}
+
+.line {
+    background-color: darkmagenta;
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.line:hover {
+    /* opacity: 0.5; */
+}
+
+.tickmark .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    /* top: -20px;
+    left: -50 */
+}
+
+
+.tickmark:hover .tooltip {
+    visibility: visible;
+}
+
